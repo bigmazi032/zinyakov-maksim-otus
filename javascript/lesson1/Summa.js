@@ -1,15 +1,10 @@
-function sum (a) {
-    if (!sum.result) {
-        sum.result=0;
-    }
-
-    if (a) {
-        sum.result+=a;
-        return sum;
-    } else {
-        const r = sum.result;
-        sum.result = 0;
-        return r;
+function sum(a) {
+    return function(b) {
+        if (b !== undefined) {
+            return sum(a+b);
+        } else {
+            return a;
+        }
     }
 }
 // проверяем
