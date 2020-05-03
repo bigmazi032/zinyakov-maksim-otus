@@ -1,0 +1,44 @@
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Lit-element home task</title>
+    <script type="module" src="../components/my-tree.js"></script>
+  </head>
+  <body>
+    <script>
+      const data = [
+      {
+        "id": 1,
+              "items": [
+        {
+          "id": 2,
+          "items": [
+            {
+              "id": 3
+            }
+          ]
+        },
+        {
+          "id": 4
+        },
+                  {
+                      "id": 5,
+                      "items":[]
+                  }
+      ]
+      }];
+      const lastId = 5;
+
+      function _updateData(pData) {
+          myTree.setAttribute("data", JSON.stringify(pData));
+      }
+
+      const myTree = document.createElement("my-tree");
+      _updateData(data);
+      myTree.setAttribute("lastId", `${lastId}`);
+      document.body.appendChild(myTree);
+     </script>
+  </body>
+</html>
