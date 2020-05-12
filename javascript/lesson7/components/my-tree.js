@@ -42,14 +42,14 @@ export class MyTree extends LitElement {
         let el = data[index];
         let branch;
         if (this.isLeaf(el)) {
-            branch = html`<my-leaf data  = ${JSON.stringify(el)} ></my-leaf>`;
+            branch = html`<my-leaf data=${JSON.stringify(el)} ></my-leaf>`;
         } else {
             branch = html`<div class="branch decorated"> 
                             ветка - ${el.id}
-                            <my-toggle-btn class = "menu ${this.hideToggleButton(el)}" 
+                            <my-toggle-btn class="menu ${this.hideToggleButton(el)}" 
                                 @click="${(e) => {this.clickToggleBtn(e)}}"
                                 captions='["v","^"]'
-                                state = '1'
+                                state='1'
                             ></my-toggle-btn>
                             <button 
                                 @click="${() => {this.addLeaf(el.items)}}"
@@ -105,7 +105,7 @@ export class MyTree extends LitElement {
                     <button class="menu"
                         @click="${() => {this.addLeaf(this.data)}}"
                     >l</button> 
-                    <button class ="menu"
+                    <button class="menu"
                         @click="${() => {this.addBranch(this.data)}}"
                     >b</button> 
                 </div>
