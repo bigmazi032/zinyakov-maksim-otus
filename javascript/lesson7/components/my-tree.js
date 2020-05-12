@@ -52,10 +52,10 @@ export class MyTree extends LitElement {
                                 state = '1'
                             ></my-toggle-btn>
                             <button 
-                                @click="${(e) => {this.addLeaf(e, el.items)}}"
+                                @click="${() => {this.addLeaf(el.items)}}"
                             >+l</button> 
                             <button 
-                                @click="${(e) => {this.addBranch(e, el.items)}}"
+                                @click="${() => {this.addBranch(el.items)}}"
                             >+b</button> 
                             ${this.createTree(el.items)}
                         </div>`
@@ -86,11 +86,11 @@ export class MyTree extends LitElement {
         return !el.hasOwnProperty("items");
     }
 
-    addLeaf(e, array) {
+    addLeaf(array) {
         array.push({"id": ++this.lastId})
     }
 
-    addBranch(e, array) {
+    addBranch(array) {
         array.push(
             {
                 "id": ++this.lastId,
@@ -103,10 +103,10 @@ export class MyTree extends LitElement {
             <div class="tree decorated">
                 <div>Tree
                     <button class="menu"
-                        @click="${(e) => {this.addLeaf(e, this.data)}}"
+                        @click="${() => {this.addLeaf(this.data)}}"
                     >l</button> 
                     <button class ="menu"
-                        @click="${(e) => {this.addBranch(e, this.data)}}"
+                        @click="${() => {this.addBranch(this.data)}}"
                     >b</button> 
                 </div>
                 ${this.createTree(this.data)}
