@@ -1,0 +1,6 @@
+.text {
+    font-family: cursive;
+}
+.completed {
+    text-decoration: line-through;
+}
