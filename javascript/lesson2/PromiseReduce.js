@@ -1,15 +1,20 @@
 // решение
 function promiseReduce(asyncFunctions, reduce, initialValue) {
-    return new Promise(resolve => {
-        asyncFunctions.shift()().then(result=> {
-            initialValue = reduce(result, initialValue);
-            if (asyncFunctions && asyncFunctions.length > 0 ) {
-                resolve(promiseReduce(asyncFunctions, reduce, initialValue))
-            } else {
-                resolve(initialValue)
-            }
+    let asyncFunctionsClone = Object.assign([], asyncFunctions);
+    return _promiseReduce (asyncFunctionsClone, reduce, initialValue);
+
+    function _promiseReduce (asyncFunctionsClone, reduce, initialValue) {
+        return new Promise(resolve => {
+            asyncFunctionsClone.shift()().then(result=> {
+                initialValue = reduce(result, initialValue);
+                if (asyncFunctionsClone && asyncFunctionsClone.length > 0 ) {
+                    resolve(_promiseReduce(asyncFunctionsClone, reduce, initialValue))
+                } else {
+                    resolve(initialValue)
+                }
+            })
         })
-    })
+    }
 }
 // проверка
 var fn1 = () => {
